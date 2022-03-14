@@ -3,7 +3,7 @@ package sorting;
 public class Main {
 
 	private enum Algorithm {
-		INSERTION, SELECTION
+		INSERTION, SELECTION, QUICK
 	}
 
 	private static final int COUNT = 32000;
@@ -14,6 +14,8 @@ public class Main {
 			System.out.println("ROUND " + (i + 1) + "/" + TIMES + ":");
 			run(Algorithm.INSERTION);
 			run(Algorithm.SELECTION);
+			run(Algorithm.QUICK);
+			System.out.println();
 		}
 
 		System.out.println("DONE");
@@ -35,6 +37,12 @@ public class Main {
 				System.out.println("Selection:");
 				sTime = System.nanoTime();
 				Selection.sort(arr);
+				dur = (System.nanoTime() - sTime) / 1000000;
+				break;
+			case QUICK:
+				System.out.println("Quick:");
+				sTime = System.nanoTime();
+				Quick.sort(arr, 0, arr.length - 1);
 				dur = (System.nanoTime() - sTime) / 1000000;
 				break;
 		}
